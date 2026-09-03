@@ -67,5 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "DesarolloDeVideojuegos3D.slnx"
+    "dotnet.defaultSolution": "DesarolloDeVideojuegos3D.slnx",
+    "chat.disableAIFeatures": false
 }
