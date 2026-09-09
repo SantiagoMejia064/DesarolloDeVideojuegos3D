@@ -1,6 +1,6 @@
-public enum WeaponTypeEnum
-    {
-        Pistol,
-        Shotgun,
-        RocketLauncher
-    }
+public enum WeaponType
+{
+    Pistol,
+    Shotgun,
+    RocketLauncher
+}

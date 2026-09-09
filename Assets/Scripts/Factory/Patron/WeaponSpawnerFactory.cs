@@ -40,17 +40,17 @@ public class WeaponSpawnerFactory : MonoBehaviour
 
     private void OnPistol(InputAction.CallbackContext context)
     {
-        CreateWeapon(WeaponTypeEnum.Pistol);
+        CreateWeapon(WeaponType.Pistol);
     }
 
     private void OnShotgun(InputAction.CallbackContext context)
     {
-        CreateWeapon(WeaponTypeEnum.Shotgun);
+        CreateWeapon(WeaponType.Shotgun);
     }
 
     private void OnRocketLauncher(InputAction.CallbackContext context)
     {
-        CreateWeapon(WeaponTypeEnum.RocketLauncher);
+        CreateWeapon(WeaponType.RocketLauncher);
     }
 
     private void OnFire(InputAction.CallbackContext context)
@@ -58,12 +58,11 @@ public class WeaponSpawnerFactory : MonoBehaviour
         FireCurrentWeapon();
     }
 
-    private void CreateWeapon(WeaponTypeEnum weaponType)
+    private void CreateWeapon(WeaponType weaponType)
     {
         DestroyCurrentWeapon();
-        
-        currentWeapon = WeaponFactory.CreateWeapon(weaponType, spawnPoint);
 
+        currentWeapon = weaponFactory.CreateWeapon(weaponType, spawnPoint);
         currentWeapon.transform.SetParent(spawnPoint.transform);
 
         if (currentWeapon != null)
@@ -87,5 +86,4 @@ public class WeaponSpawnerFactory : MonoBehaviour
             currentWeapon.Fire();
         }
     }
-
 }
