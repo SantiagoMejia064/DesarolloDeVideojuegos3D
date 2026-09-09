@@ -138,6 +138,15 @@ public partial class @NIS: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Rifle"",
+                    ""type"": ""Button"",
+                    ""id"": ""106f48b3-bfb3-483e-a280-53bb0e6ecddd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Fire"",
                     ""type"": ""Button"",
                     ""id"": ""aaa50e83-ff16-4932-918b-91daecfa7863"",
@@ -312,6 +321,28 @@ public partial class @NIS: IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""393186fd-dc48-452f-b688-c331a8fcb155"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rifle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86e824a8-43da-42f4-adf1-0f8d2ad7bd47"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rifle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -348,6 +379,7 @@ public partial class @NIS: IInputActionCollection2, IDisposable
         m_Player_Pistola = m_Player.FindAction("Pistola", throwIfNotFound: true);
         m_Player_Shotgun = m_Player.FindAction("Shotgun", throwIfNotFound: true);
         m_Player_RocketLauncher = m_Player.FindAction("Rocket Launcher", throwIfNotFound: true);
+        m_Player_Rifle = m_Player.FindAction("Rifle", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
     }
 
@@ -434,6 +466,7 @@ public partial class @NIS: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pistola;
     private readonly InputAction m_Player_Shotgun;
     private readonly InputAction m_Player_RocketLauncher;
+    private readonly InputAction m_Player_Rifle;
     private readonly InputAction m_Player_Fire;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
@@ -466,6 +499,10 @@ public partial class @NIS: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/RocketLauncher".
         /// </summary>
         public InputAction @RocketLauncher => m_Wrapper.m_Player_RocketLauncher;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Rifle".
+        /// </summary>
+        public InputAction @Rifle => m_Wrapper.m_Player_Rifle;
         /// <summary>
         /// Provides access to the underlying input action "Player/Fire".
         /// </summary>
@@ -511,6 +548,9 @@ public partial class @NIS: IInputActionCollection2, IDisposable
             @RocketLauncher.started += instance.OnRocketLauncher;
             @RocketLauncher.performed += instance.OnRocketLauncher;
             @RocketLauncher.canceled += instance.OnRocketLauncher;
+            @Rifle.started += instance.OnRifle;
+            @Rifle.performed += instance.OnRifle;
+            @Rifle.canceled += instance.OnRifle;
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
@@ -540,6 +580,9 @@ public partial class @NIS: IInputActionCollection2, IDisposable
             @RocketLauncher.started -= instance.OnRocketLauncher;
             @RocketLauncher.performed -= instance.OnRocketLauncher;
             @RocketLauncher.canceled -= instance.OnRocketLauncher;
+            @Rifle.started -= instance.OnRifle;
+            @Rifle.performed -= instance.OnRifle;
+            @Rifle.canceled -= instance.OnRifle;
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
@@ -644,6 +687,13 @@ public partial class @NIS: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRocketLauncher(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Rifle" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRifle(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Fire" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

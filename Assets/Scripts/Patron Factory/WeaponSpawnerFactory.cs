@@ -23,6 +23,7 @@ public class WeaponSpawnerFactory : MonoBehaviour
         controls.Player.Pistola.performed += OnPistol;
         controls.Player.Shotgun.performed += OnShotgun;
         controls.Player.RocketLauncher.performed += OnRocketLauncher;
+        controls.Player.Rifle.performed += OnRifle;
 
         controls.Player.Fire.performed += OnFire;
     }
@@ -32,6 +33,7 @@ public class WeaponSpawnerFactory : MonoBehaviour
         controls.Player.Pistola.performed -= OnPistol;
         controls.Player.Shotgun.performed -= OnShotgun;
         controls.Player.RocketLauncher.performed -= OnRocketLauncher;
+        controls.Player.Rifle.performed -= OnRifle;
 
         controls.Player.Fire.performed -= OnFire;
 
@@ -51,6 +53,11 @@ public class WeaponSpawnerFactory : MonoBehaviour
     private void OnRocketLauncher(InputAction.CallbackContext context)
     {
         CreateWeapon(WeaponType.RocketLauncher);
+    }
+
+    private void OnRifle(InputAction.CallbackContext context)
+    {
+        CreateWeapon(WeaponType.Rifle);
     }
 
     private void OnFire(InputAction.CallbackContext context)

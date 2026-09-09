@@ -5,6 +5,7 @@ public class WeaponFactory : MonoBehaviour
     [SerializeField] private Weapon pistolPrefab;
     [SerializeField] private Weapon shotgunPrefab;
     [SerializeField] private Weapon rocketLauncherPrefab;
+    [SerializeField] private Weapon riflePrefab;
 
     public Weapon CreateWeapon(WeaponType weaponType, Transform spawnPoint)
     {
@@ -22,6 +23,10 @@ public class WeaponFactory : MonoBehaviour
 
             case WeaponType.RocketLauncher:
                 weaponPrefab = rocketLauncherPrefab;
+                break;
+
+            case WeaponType.Rifle:
+                weaponPrefab = riflePrefab;
                 break;
         }
 
