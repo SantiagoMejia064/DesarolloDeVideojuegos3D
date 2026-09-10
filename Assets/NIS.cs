@@ -154,6 +154,15 @@ public partial class @NIS: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Damage"",
+                    ""type"": ""Button"",
+                    ""id"": ""15984f8a-6d18-444b-a464-f50e756c1d0d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -343,6 +352,28 @@ public partial class @NIS: IInputActionCollection2, IDisposable
                     ""action"": ""Rifle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6d0051e-08d7-4b81-a452-f55e5c4e77df"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Damage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9314c09-dd08-4330-87de-f39aa6899a1d"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Damage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -381,6 +412,7 @@ public partial class @NIS: IInputActionCollection2, IDisposable
         m_Player_RocketLauncher = m_Player.FindAction("Rocket Launcher", throwIfNotFound: true);
         m_Player_Rifle = m_Player.FindAction("Rifle", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_Damage = m_Player.FindAction("Damage", throwIfNotFound: true);
     }
 
     ~@NIS()
@@ -468,6 +500,7 @@ public partial class @NIS: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RocketLauncher;
     private readonly InputAction m_Player_Rifle;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_Damage;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -507,6 +540,10 @@ public partial class @NIS: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Fire".
         /// </summary>
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Damage".
+        /// </summary>
+        public InputAction @Damage => m_Wrapper.m_Player_Damage;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -554,6 +591,9 @@ public partial class @NIS: IInputActionCollection2, IDisposable
             @Fire.started += instance.OnFire;
             @Fire.performed += instance.OnFire;
             @Fire.canceled += instance.OnFire;
+            @Damage.started += instance.OnDamage;
+            @Damage.performed += instance.OnDamage;
+            @Damage.canceled += instance.OnDamage;
         }
 
         /// <summary>
@@ -586,6 +626,9 @@ public partial class @NIS: IInputActionCollection2, IDisposable
             @Fire.started -= instance.OnFire;
             @Fire.performed -= instance.OnFire;
             @Fire.canceled -= instance.OnFire;
+            @Damage.started -= instance.OnDamage;
+            @Damage.performed -= instance.OnDamage;
+            @Damage.canceled -= instance.OnDamage;
         }
 
         /// <summary>
@@ -701,5 +744,12 @@ public partial class @NIS: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnFire(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Damage" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDamage(InputAction.CallbackContext context);
     }
 }
